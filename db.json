@@ -1,0 +1,40 @@
+{
+    "tweets": [
+      {
+        "category": "Technology",
+        "retweets": "32",
+        "isLocal": true,
+        "text": "New ECMAScript features!"
+      },
+      {
+        "category": "Entertainment",
+        "retweets": "54",
+        "isLocal": false,
+        "text": "Omg. A tweet."
+      },
+      {
+        "category": "Music",
+        "retweets": "100",
+        "isLocal": true,
+        "text": "BTS Dynamite is nice."
+      },
+      {
+        "category": "Technology",
+        "retweets": "32",
+        "isLocal": false,
+        "text": "New tweet from tech!"
+      },
+      {
+        "category": "Others",
+        "retweets": "88",
+        "isLocal": true,
+        "text": "Some other theme"
+      },
+      {
+        "category": "Music",
+        "retweets": "100",
+        "isLocal": false,
+        "text": "Omg BTS!"
+      }
+    ]
+}
