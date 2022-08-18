@@ -1,38 +1,36 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import SearchBar from "./SearchBar/SearchBar";
-import TweetList from "./TweetsList";
+import SearchBar from './SearchBar/SearchBar'
+import TweetsList from './TweetsList'
 import { tweets } from '../../db.json'
-import { Filters } from "../types/filters";
-
-export function useOrder(data: any[], key: string) {
-    const result = [...data]
-    return result.sort((a, b) => a[key].localeCompare(b[key]))
-}
+import { Filters } from '../types/filters'
+import { Tweet } from '../types/tweet'
+import { useOrderTweets } from '../hooks/UseOrderTweets'
 
 function TweetsSearchResults() {
-    const [search, setSearch] = useState('');
-    const [inLocation, setInLocation] = useState(false)
-    const filters: Filters= { search, inLocation }
-    const data = useOrder(tweets, 'category')
+  const [search, setSearch] = useState('')
+  const [inLocation, setInLocation] = useState(false)
+  const filters: Filters = { search, inLocation }
+  const data = useOrderTweets<Tweet>(tweets, 'category')
 
-    function handleInputChange(event: any) {
-        const type = event.target.type
-        type == 'search' ?
-            setSearch(event.target.value) :
-            setInLocation(event.target.checked)
-    }
+  function handleInputChange(event: any) {
+    const type = event.target.type
+    type == 'search'
+      ? setSearch(event.target.value)
+      : setInLocation(event.target.checked)
+  }
 
-    return (
-        <>
-            <SearchBar
-                search={search}
-                inLocation={inLocation}
-                onInputChange={handleInputChange} />
+  return (
+    <>
+      <SearchBar
+        search={search}
+        inLocation={inLocation}
+        onInputChange={handleInputChange}
+      />
 
-            <TweetList tweets={data} filters={filters} />
-        </>
-    )
+      <TweetsList tweets={data} filters={filters} />
+    </>
+  )
 }
 
-export default TweetsSearchResults;
+export default TweetsSearchResults
